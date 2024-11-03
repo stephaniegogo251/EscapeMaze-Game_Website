@@ -173,7 +173,7 @@ function userStatus() {
         alert("You have successfully escaped the maze! You got " + ((parseInt(correctAns)*500)+1000) + " pts");
         clearInterval(displayStatus); //stops interval of displayStatus function
         updateScore(1);
-        window.location.assign("leaderboard.html"); //redirects page to home page
+        window.location.assign("./leaderboard.html"); //redirects page to home page
     }
     
     //if user escapes the maze and has time left but has not answered all the questions, the user cannot escape the maze
@@ -189,7 +189,7 @@ function userStatus() {
         alert("You have " + correctAns * 500 + " pts.")
         clearInterval(displayStatus);
         updateScore(0);
-        window.location.assign("leaderboard.html");
+        window.location.assign("./leaderboard.html");
     }
 
     //if the user could not escape the maze on time (whether or not they've answered all questions), they get 0 points (the griever caught them)
@@ -197,7 +197,7 @@ function userStatus() {
         gameFinish();
         alert("Game Over!");
         clearInterval(displayStatus);
-        window.location.assign("leaderboard.html");
+        window.location.assign("./leaderboard.html");
     }
 
     else {
@@ -271,7 +271,7 @@ document.addEventListener("keydown", function(k) {
     //Exits the game and redirects page to home page if Escape key is pressed
     else if (k.key == "Escape"){
         alert("You are now exiting the game!");
-        window.location.assign("home.html");
+        window.location.assign("./home.html");
     }
 
     else {
