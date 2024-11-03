@@ -11,16 +11,16 @@
 		<!--Displays the first two links on the navigation bar-->
 		<div class="nav-bar-1">
 			<ul>
-				<li><a href="home.html">HOME</a></li>
-				<li><a href="leaderboard.html">LEADERBOARD</a></li>
+				<li><a href="./home.html">HOME</a></li>
+				<li><a href="./leaderboard.html">LEADERBOARD</a></li>
 			</ul>
 		</div>
 		
 		<!--Displays the last two links on the navigation bar-->
 		<div class="nav-bar-2">
 			<ul>
-				<li><a href="login.html">LOGIN</a></li>
-				<li><a href="signup.html">SIGN UP</a></li>
+				<li><a href="./login.html">LOGIN</a></li>
+				<li><a href="./signup.html">SIGN UP</a></li>
 			</ul>
 		</div>
 		
@@ -55,13 +55,13 @@
 				<input type="password" class="inputs" id="lg_password" required>
 				
 				<!--Allows user to reset their password through a form-->
-				<p><a href="resetpwd.html">Forgot Password?</a></p>
+				<p><a href="./resetpwd.html">Forgot Password?</a></p>
 				
 				<!--Login Button allows the user to start the game directly-->
 				<button onclick="logIn(event)" class="login-btn" type="submit">Login</button>
 				
 				<!--Allows user to create an account by signing up-->
-				<p>Don't have an account? <a href="signup.html"><u>Sign Up</u></a></p>
+				<p>Don't have an account? <a href="./signup.html"><u>Sign Up</u></a></p>
 			</form>
 		</div>
 	</div>
@@ -97,7 +97,7 @@
 			if (user_records.some((user) => {return user.name == name && user.password == password})){
 				sessionStorage.setItem("loggedinUser", name);
 				alert("You have logged in successfully!");
-				window.location.assign("maze.html"); //redirected to game page if login is successful
+				window.location.assign("./maze.html"); //redirected to game page if login is successful
 			}
 
 			else {
@@ -111,7 +111,7 @@
 
 			if (loggedIn){ //if user has logged in
 				alert(loggedIn + " has already logged in!");
-				window.location.assign("maze.html"); //redirected to game page
+				window.location.assign("./maze.html"); //redirected to game page
 			}
 		}
 	</script>
