@@ -1,0 +1,1 @@
+This is a game website called Escape Maze created using HTML, CSS and JavaScript. It helped me improve my front end development skills and also helped me enhance soft skills such as critical thinking, creativity and problem solving skills.
