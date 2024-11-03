@@ -11,16 +11,16 @@
 		<!--Displays the first two links on the navigation bar-->
 		<div class="nav-bar-1">
 			<ul>
-				<li><a href="home.html">HOME</a></li>
-				<li><a href="leaderboard.html">LEADERBOARD</a></li>
+				<li><a href="./home.html">HOME</a></li>
+				<li><a href="./leaderboard.html">LEADERBOARD</a></li>
 			</ul>
 		</div>
 		
 		<!--Displays the last two links on the navigation bar-->
 		<div class="nav-bar-2">
 			<ul>
-				<li><a href="login.html">LOGIN</a></li>
-				<li><a href="signup.html">SIGN UP</a></li>
+				<li><a href="./login.html">LOGIN</a></li>
+				<li><a href="./signup.html">SIGN UP</a></li>
 			</ul>
 		</div>
 		
@@ -61,7 +61,7 @@
 				<button onclick="signUp(event)" type="submit" class="signup-btn">Sign Up</button>
 
 				<!--Users that already have an account can go click here to go to login page-->
-				<p>Already have an account? <a href="login.html"><u>Login here</u></a></p>
+				<p>Already have an account? <a href="./login.html"><u>Login here</u></a></p>
 			</form>
 		</div>
 	</div>
@@ -104,7 +104,7 @@
 			//if user already has an account (same email different username), they are alerted and redirected to login page
 			if (user_records.some((user) => {return user.email==email})){
 				alert("You already have an account. Please login.");
-				window.location.assign("login.html");
+				window.location.assign("./login.html");
 				return;
 			}
 
@@ -131,7 +131,7 @@
 						"score": 0
 					});
 					localStorage.setItem("users", JSON.stringify(user_records)); //saves new record in local storage
-					window.location.assign("login.html"); //redirected to login page if sign up is successful
+					window.location.assign("./login.html"); //redirected to login page if sign up is successful
 				}
 			}
 		}
