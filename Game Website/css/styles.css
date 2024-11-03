@@ -1,0 +1,831 @@
+/* imports external fonts from google */
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&display=swap');
+
+/* Body styling */
+body {
+    height: 100vh; 
+	width: 100vw;
+	overflow: hidden; /* hides any element that goes out of bounds */
+	margin: 0; /* removes any extra white space */
+	position: absolute;
+	background-color: black;
+} 
+
+/* left navigation bar styling */ 
+.nav-bar-1 {
+	top: 0; 
+	position: absolute;
+}
+
+/* list styling of left navigation bar */
+.nav-bar-1 ul {
+	display: flex; /* displays list items in a row */
+	gap: 20%; /* gap between list items */
+	list-style-type: none; /* removes bullet points */
+}
+
+/* styling of list items of left navigation bar */
+.nav-bar-1 a {
+	border-radius: 10px; /* makes the corners of the border rounder */
+	padding: 4px;
+	background-color: black;
+	
+	font-family: Silkscreen;
+	color: #cc0000; /* changes color of text */
+	font-size: 25px;
+}
+
+/* hover effect for list items of left navigation bar */
+.nav-bar-1 a:hover {
+	background-color: #cc0000;
+	color: black;
+	cursor: pointer; /* changes cursor to hand/cursor */
+}
+
+/* left navigation bar styling */ 
+.nav-bar-2 {
+	top: 0;
+	position: absolute;
+	right: 55px;
+}
+
+/* list styling of right navigation bar */
+.nav-bar-2 ul {
+	display: flex;
+	gap: 20%;
+	list-style-type: none; /* removes bullet points */
+}
+
+/* styling of list items of right navigation bar */
+.nav-bar-2 a {
+	border-radius: 10px;
+	white-space: nowrap;
+	padding: 4px;
+	background-color: black;
+	font-family: Silkscreen;
+	color: #cc0000;
+	font-size: 25px;
+}
+
+/* hover effect for list items of right navigation bar */
+.nav-bar-2 a:hover {
+	background-color: #cc0000;
+	color: black;
+	cursor: pointer;
+}
+
+/* removes the underline of anchor tags or links */
+a {
+	text-decoration: none;
+}
+
+/* styling for the game title in home page */
+.title {
+	position: absolute;
+	color: #eb0303;
+	font-family: "Black Ops One";
+	font-size: 120px;
+	background-color: black;
+	padding: 20px; /* distance of text from the element's border (space within the element) */
+	margin-top: 300px; /* distance from the top of the window to the top of the element */
+	margin-left: 280px; /* distance from the left of the window to the top of the element */
+	text-align: center; /* aligns text to the center of the element */
+	z-index: 2; /* makes the title appear in front of the other elements */
+	border-radius: 15px;
+	user-select: none; /* does not let user select the title */
+	opacity: 0.85; /* opacity of background color of element is decreased */
+	animation: 2s linear 0s infinite running myScale; /* runs infinitely every 2 seconds */
+}
+
+/* animation that makes the title zoom in and out */
+@keyframes myScale{
+	50%{transform: scale(0.8, 0.8);}
+}
+
+/*styling of 1st right wall*/
+.right-wall-1 {
+	position: absolute;
+	height: 500px;
+	width: 300px;
+	padding: 30px;
+	margin-top: 137px;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/*styling of left side of right wall*/
+.right-wall-1::before {
+	content: ""; /* without content, the wall cannot be displayed */
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: -20px;
+	transform: skewY(45deg); /* slightly turns the side of the wall */
+	transform-origin: top right;
+}
+
+/* styling of top side of right wall */
+.right-wall-1::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 64.5%;
+	transform: rotateZ(90deg) skewY(-45deg); /* rotates the wall to face the top and tilts it slightly */
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for first right wall*/
+.right-wall-1, .right-wall-1::before, .right-wall-1::after {
+	background: url("../images/greywall.jpeg"); /* background image for walls */
+	border-radius: 2px; /* makes the corners more round */
+}
+
+/*styling of 2nd right wall*/
+.right-wall-2 {
+	position: absolute;
+	height: 350px;
+	width: 450px;
+	padding: 30px;
+	margin-top: 177px;
+	right: 0px;
+	top: 40%;
+	transform: translateY(-50%); /* moves the wall upwards */
+}
+
+/*styling of left side of right wall*/
+.right-wall-2::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: -20px;
+	transform: skewY(45deg);
+	transform-origin: top right;
+}
+
+/* styling of top side of right wall */
+.right-wall-2::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 124.5%;
+	transform: rotateZ(90deg) skewY(-45deg);
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for 2nd right wall*/
+.right-wall-2, .right-wall-2::before, .right-wall-2::after {
+	background: url("../images/greywall.jpeg"), gray;
+	border-radius: 2px;
+	z-index: -2;
+}
+
+/*styling of 3rd right wall*/
+.right-wall-3 {
+	position: absolute;
+	height: 250px;
+	width: 580px;
+	padding: 30px;
+	margin-top: 237px;
+	right: 0px;
+	top: 30%;
+	transform: translateY(-50%);
+	z-index: -1;
+}
+
+/*styling of left side of right wall*/
+.right-wall-3::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: -20px;
+	transform: skewY(45deg);
+	transform-origin: top right;
+}
+
+/* styling of top side of right wall */
+.right-wall-3::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 207%;
+	transform: rotateZ(90deg) skewY(-45deg);
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for 3rd right wall*/
+.right-wall-3, .right-wall-3::before, .right-wall-3::after {
+	background: url("../images/greywall.jpeg"), gray;
+	border-radius: 2px;
+	z-index: -3;
+}
+
+/*styling of 1st left wall*/
+.left-wall-1 {
+	position: absolute;
+	height: 500px;
+	width: 300px;
+	padding: 30px;
+	margin-top: 137px;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: -1;
+}
+
+/*styling of right side of left wall*/
+.left-wall-1::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: 360px;
+	transform: skewY(135deg);
+	transform-origin: top left;
+}
+
+/* styling of top side of left wall */
+.left-wall-1::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	transform: rotateZ(90deg) skewY(45deg);
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for 1sd left wall*/
+.left-wall-1, .left-wall-1::before, .left-wall-1::after {
+	background: url("../images/greywall.jpeg"), gray;
+	border-radius: 2px;
+}
+
+/*styling of 2nd left wall*/
+.left-wall-2 {
+	position: absolute;
+	height: 350px;
+	width: 450px;
+	padding: 30px;
+	margin-top: 177px;
+	left: 0;
+	top: 40%;
+	transform: translateY(-50%);
+}
+
+/*styling of right side of left wall*/
+.left-wall-2::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: 510px;
+	transform: skewY(135deg);
+	transform-origin: top left;
+}
+
+/* styling of top side of left wall */
+.left-wall-2::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	transform: rotateZ(90deg) skewY(45deg);
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for 1sd left wall*/
+.left-wall-2, .left-wall-2::before, .left-wall-2::after {
+	background: url("../images/greywall.jpeg"), gray;
+	border-radius: 2px;
+	z-index: -2;
+}
+
+/*styling of 3rd left wall*/
+.left-wall-3 {
+	position: absolute;
+	height: 250px;
+	width: 580px;
+	padding: 30px;
+	margin-top: 237px;
+	left: 0;
+	top: 30%;
+	transform: translateY(-50%);
+}
+
+/*styling of right side of left wall*/
+.left-wall-3::before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	top: 0;
+	left: 640px;
+	transform: skewY(135deg);
+	transform-origin: top left;
+}
+
+/* styling of top side of left wall */
+.left-wall-3::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 100%;
+	transform: rotateZ(90deg) skewY(45deg);
+	top: 0;
+	right: 0px;
+	transform-origin: top right;
+}
+
+/* common styling for 1sd left wall*/
+.left-wall-3, .left-wall-3::before, .left-wall-3::after {
+	background: url("../images/greywall.jpeg"), gray;
+	border-radius: 2px;
+	z-index: -3;
+}
+
+/* styling for the buttons in home page */
+.buttons {
+	position: absolute;
+	display: flex; /* displays the two buttons in a row */
+	color: #cc0000;
+	margin-top: 500px;
+	margin-left: 520px;;
+}
+
+/* styling for the actual buttons (links) */
+.buttons a {
+	margin-top: 20px;
+	color: #eb0303;
+	border: 5px outset #cc0000; /* 3d effect */
+	background-color: black;
+	border-radius: 15px;
+	font-size: 35px;
+	font-family: Silkscreen;
+	padding: 5px;
+	margin-right: 100px;
+}
+
+/* hover effect for buttons */
+.buttons a:hover {
+	background-color: #cc0000;
+	color: black;
+	cursor: pointer;
+}
+
+/* styling for floor for all pages except game page */
+.floor {
+	content: "";
+	height: 150px;
+	position: absolute;
+	margin-top: 612.5px;
+	width: 100%;
+	padding-bottom: 85px;
+	left: 0;
+	right: 0;
+	background: url("../images/shley-tree-2.png"),#592720; /*background image for floor */
+	background-repeat: repeat; /*does not repeat background image */
+	background-size: contain; /* does not zoom in or upscale the image */
+	opacity: 0.6;
+	z-index: -4; /* it appears behind all the walls */
+}
+
+/* styling for the sky background of all pages except for game page */
+.sky {
+	background: url("../images/asfalt-light.png"), linear-gradient(#32174d, #560319);
+	content: "";
+	position: absolute;
+	margin-top: 62.5px;
+	left: 0;
+	right: 0;
+	height: 550px;
+	z-index: -4; /* appears behind all the other elements */
+}
+
+/* styling for leaderboard */
+.main {
+	position: absolute;
+	color: #eb0303;
+	background-color: black;
+	padding: 10px 30px 10px 30px;
+	margin-top: 150px;
+	margin-left: 370px;
+	height: 600px;
+	text-align: center;
+	z-index: 2; /* appears in front of the other elements */
+	border-radius: 15px;
+	user-select: none;
+	opacity: 0.9;
+	animation: 0.8s linear zoomOut; /* animation effect */
+	overflow: hidden; /* displays elements that can fit within itself only (10 users) */
+}
+
+/* animation effect that animates an element to zoom out */
+@keyframes zoomOut {
+	0%{transform: scale(0.4,0.4)}
+	50%{transform: scale(0.7,0.7)}
+	100%{transform: scale(1,1)}
+}
+
+/* styling for leaderboard title */
+.main-title {
+	padding-bottom: 5px;
+	font-size: 100px;
+	font-family: "Black Ops One";
+}
+
+/* styling for main div that displays name list and score list */
+.player-list {
+	display: flex; /* displays both lists in a row */
+	justify-content: space-between; /* ensures space between both lists */
+	font-family: Freeman;
+}
+
+.player-names li {
+	text-align: left; /* aligns names to left */
+	list-style-type: none; 
+	padding: 2px 2px 10px 2px;
+	font-size: 25px;
+}
+
+.player-scores li {
+	text-align: right; /* aligns score to right */
+	list-style-type: none;
+	padding: 2px 2px 10px 2px;
+	font-size: 25px;
+}
+
+/* styling for body of login, sign-up, reset password, how-to and riddles */
+.login-body, .signup-body, .reset-body, .howto-body, .qbody {
+	width: 600px;
+	position: absolute;
+	color: #eb0303;
+	background-color: black;
+	padding: 10px 30px 10px 30px;
+	margin-top: 150px;
+	margin-left: 400px;
+	height: 600px;
+	text-align: center;
+	z-index: 2;
+	border-radius: 15px;
+	user-select: none;
+	opacity: 0.9;
+	animation: 0.8s linear zoomOut;
+}
+
+/* specific styling for riddles */
+#q1, #q2, #q3, #q4, #q5 {
+	width: 760px;
+	height: 650px;
+	margin-top: 80px;
+	margin-left: -40px;
+	background-color: rgba(0, 0, 0, 0.9);
+	z-index: 3;
+	display: none;
+}
+
+/* styling for heading of riddles */
+#q1 h1, #q2 h1, #q3 h1, #q4 h1, #q5 h1 {
+	padding-bottom: 0px;
+	font-size: 80px;
+	font-family: "Black Ops One";
+}
+
+/* styling for paragraph elements of riddles */
+#q1 p, #q2 p, #q3 p, #q4 p, #q5 p {
+	font-size: 40px;
+	font-family: Freeman;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 80px;
+}
+
+/* specific styling for sign-up */
+.signup-body {
+	margin-top: 125px;
+	height: 630px;
+}
+
+/* specific styling for how-to */
+.howto-body {
+	width: 760px;
+	margin-left: 350px;
+	height: 550px;
+}
+
+/* common styling for labels and input element of forms */
+.labels, .inputs {
+	display: block;
+	font-family: Freeman;
+	color: #eb0303;
+	font-size: 25px;
+	background-color: transparent;
+}
+
+/*specific styling of input elements */
+.inputs {
+	border-bottom: 2px solid #eb0303;
+	background: transparent;
+	color: white;
+}
+
+/* styling for buttons of login, sign-up, reset and submit button (of riddles) */
+.login-btn, .signup-btn, .reset-btn, .submit-btn {
+	display: block;
+	color: #eb0303;
+	font-size: 25px;
+	font-family: Freeman;
+	border: 2px solid #eb0303;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: transparent;
+	margin-bottom: 10px;
+}
+
+/* specific styling for sign up button */
+.signup-btn {
+	margin-left: 255px;
+}
+
+/* specific styling for submit button */
+.submit-btn {
+	margin-bottom: 0px;
+}
+
+/* styling for options for riddles */
+.options {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5%;
+}
+
+/* styling for each option */
+.options h2 {
+	background-color: #eb0303;
+	color: black;
+	cursor: pointer;
+	font-size: 25px;
+	font-family: Freeman;
+	border: 2px solid #eb0303;
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+/* hover effect for all buttons */
+.login-btn:hover, .signup-btn:hover, .reset-btn:hover, .submit-btn:hover {
+	background-color: #eb0303;
+	color: black;
+	cursor: pointer;
+}
+
+/* specific styling for input elements */
+.inputs {
+	padding: 10px 0px 10px 0px;
+	width: 55%;
+	margin: 20px auto 20px auto;
+}
+
+/* specific styling for login and reset button */
+.login-btn, .reset-btn {
+	margin: 20px auto 20px auto;
+}
+
+/* styling for 1st paragraph element of login body */
+.login-body p:nth-of-type(1) {
+	margin-right: 33%;
+	font-family: Freeman;
+	color: #eb0303;
+	font-size: 20px;
+}
+
+/* styling of paragraph element for sign up and login form */
+.login-body p, .signup-body p {
+	font-family: Freeman;
+	color: #eb0303;
+	font-size: 20px;
+}
+
+/* styling of anchor element for sign up and login form */
+.login-body a, .signup-body a {
+	text-decoration: none;
+	color: #eb0303;
+}
+
+/* specific styling for login button */
+.login-btn {
+	margin-top: 20px;
+	width: 30%;
+}
+
+/* styling for div elements in how-to page*/
+.boxes {
+	display: flex;
+	gap: 5%;
+	justify-content: space-between;
+	flex-wrap: nowrap; /*ensures that elements stay within the parent element */
+	align-items: center; /*centers the elements*/
+}
+
+/* sets height and width for div elements that will display images */
+.box div {
+	height: 220px;
+	width: 220px;
+	margin: 5px;
+}
+
+/* sets background image for first box */
+.img-1 {
+	background: url("../images/arrowkeys.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* sets background image for second box */
+.img-2 {
+	background: url("../images/griever.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* sets background image for third box */
+.img-3 {
+	background: url("../images/riddle.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* styling of h2 elements for each box */
+.box h1 {
+	font-size: 25px;
+	width: 100%;
+	height: 15%;
+	font-family: Freeman;
+	color: #eb0303;
+	padding: 5px;
+	border: 3px dashed #eb0303;
+	margin-bottom: 40px;
+}
+
+/* styling for button to go back to home page */
+.goback-btn {
+	color: #eb0303;
+	font-size: 25px;
+	font-family: Freeman;
+	border: 2px solid #eb0303;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: black;
+	text-decoration: none;
+}
+
+/* hover effect for go-back button */
+.goback-btn:hover {
+	background-color: #eb0303;
+	color: black;
+	cursor: pointer;
+}
+
+/*background-image for maze*/
+.maze-bg {
+	background: url("../images/asfalt-light.png"), linear-gradient(#32174d, #560319);
+	height: 100%; 
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+/*styling of maze*/
+.maze {
+	max-height: 100vh;
+	max-width: 100vh; 
+	border: 1px solid black;
+	background-color: white;
+	top: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+/*styling of player*/
+#red {
+	height: 30px;
+	width: 25px;
+	position: absolute;
+	top: 55px;
+	left: 405px;
+	z-index: 2;
+}
+
+/*styling for each row in maze*/
+.row{
+	display: flex;
+	background: url("../images/shley-tree-2.png"),#592720;
+}
+
+/*styling for cells that are wall in the maze */
+.wall {
+	width: 25px;
+	height: 15px;
+	background: url("../images/greywall.jpeg");
+}
+
+/*styling for cells that are empty (path) in the maze */
+.empty {
+	width: 25px;
+	height: 15px;
+	background: transparent;
+}
+
+/*styling for the countdown screen */
+.black-screen {
+	background-color: rgba(0, 0, 0);
+	color: white;
+	height: 100vh;
+	width: 100vw;
+	font-family: "Concert One";
+	font-size: 50px;
+	padding-top: 15%;
+	text-align: center;
+}
+
+/* animation effect for the paragraph element in the black screen */
+.black-screen p {
+	animation: 2s linear 0s infinite running myScale;
+}
+
+/* styling for riddles (div elements) in the maze */
+#riddle1, #riddle2, #riddle3, #riddle4, #riddle5 {
+	position: absolute;
+	z-index: 1;
+}
+
+/* common styling for image elements of riddles */
+#riddle1 img, #riddle2 img, #riddle3 img, #riddle4 img, #riddle5 img{
+	height: 25px;
+	width: 25px;
+}
+
+/* specific styling for riddle 1*/
+#riddle1 {
+	top: 60px;
+	right: 705px;
+}
+
+/* specific styling for riddle 2*/
+#riddle2 {
+	top: 360px;
+	left: 505px;
+}
+
+/* specific styling for riddle 3*/
+#riddle3 {
+	top: 480px;
+	right: 455px;
+}
+
+/* specific styling for riddle 4*/
+#riddle4 {
+	top: 540px;
+	right: 705px;
+}
+
+/* specific styling for riddle 5*/
+#riddle5 {
+	bottom: 60px;
+	left: 455px;
+}
+
+/* styling for timer in maze*/
+#timer {
+	background-color: black;
+	color: white;
+	font-size: 50px;
+	padding: 5px;
+	top: 10px;
+	left: 10px;
+	border-radius: 10px;
+	z-index: 3;
+	position: absolute;
+}

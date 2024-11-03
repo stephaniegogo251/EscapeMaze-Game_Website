@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport scaling -->
+	<link href="../css/styles.css" rel="stylesheet"> <!-- Link to external css file -->
+    <title>Escape Maze | Leaderboard</title> <!-- Page title -->
+</head>
+<body onload="checkLogin()"> <!-- checks if user has logged in before viewing the users and their scores -->
+    <div>
+		<!--Displays the first two links on the navigation bar-->
+		<div class="nav-bar-1">
+			<ul>
+				<li><a href="home.html">HOME</a></li>
+				<li><a href="leaderboard.html">LEADERBOARD</a></li>
+			</ul>
+		</div>
+		
+		<!--Displays the last two links on the navigation bar-->
+		<div class="nav-bar-2">
+			<ul>
+				<li><a href="login.html">LOGIN</a></li>
+				<li><a href="signup.html">SIGN UP</a></li>
+			</ul>
+		</div>
+		
+		<!--Displays 3 walls on the left side-->
+		<div class="left-wall-1"></div>
+		<div class="left-wall-2"></div>
+		<div class="left-wall-3"></div>
+
+		<!--Displays the sky of the game website-->
+		<div class="sky"></div>
+
+		<!--Displays the path in the middle-->
+		<div class="path"></div>
+
+		<!--Displays the floor of the game website-->
+		<div class="floor"></div>
+
+		<!--Displays 3 walls on the right side-->
+		<div class="right-wall-1"></div>
+		<div class="right-wall-2"></div>
+		<div class="right-wall-3"></div>
+		
+		<!--Displays the leaderboard containing the top scores of all the users-->
+		<div class="main">
+			<div class="main-title">LeaderBoard</div>
+
+			<div class="player-list">
+
+				<ul id="name-list" class="player-names"></ul>
+				<ul id="score-list" class="player-scores"></ul>
+			
+			</div>
+		</div>
+	</div>
+	<script>
+		function topScores() {
+			let user_records = new Array();
+
+			//Defining variable to store the user data locally
+			let storedUsers = localStorage.getItem("users");
+
+			//if localStorage variable is not empty, the user_records varibale is assigned the localStorage data
+			if (storedUsers){
+				user_records = JSON.parse(storedUsers);
+			}
+			//else the user_records variable is assigned to an empty array
+			else {
+				user_records = [];
+			}
+
+			//sorts user_records by score in descending order
+			user_records.sort((a, b) => b.score - a.score);
+
+			//loops through the user_records and adds each name and score to the name list and score list respectively.
+			for (let i = 0; i < user_records.length; i++) {
+				let space = document.createElement("br");
+
+				let newUser = document.createElement("li");
+				newUser.innerText = user_records[i]["name"];
+
+				let newScore = document.createElement("li");
+				newScore.innerText = user_records[i]["score"];
+				
+				document.getElementById("name-list").appendChild(newUser);
+				document.getElementById("score-list").appendChild(newScore);
+			}
+		}
+
+		//Function to check if user has already logged in
+		function checkLogin() {
+			loggedIn = sessionStorage.getItem("loggedinUser");
+
+			if (loggedIn){ 
+				topScores(); //if user has logged in, leaderboard is displayed with the users' names and their scores
+			}
+
+			else {
+				alert("You must LOGIN to view the leaderboard!"); //else user is alerted to do so and is redirected to the login page
+				window.location.assign("login.html");
+			}
+		}
+	</script>
+</body>
+</html>

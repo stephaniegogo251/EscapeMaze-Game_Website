@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and viewport scaling -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Linking external fonts from google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400..800&family=Concert+One&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- Linking external CSS file -->
+    <link href="../css/styles.css" rel="stylesheet">
+
+    <title>Escape Maze</title>
+</head>
+<body>
+    <!-- Audio for game music and griever warning -->
+    <audio id="bg-music" src="../audio/creepymusic.mp3"></audio>
+    <audio id="griever_alert" src="../audio/warning2.mp3"></audio>
+    
+    <!-- Pre-game screen with countdown and instructions -->
+    <div class="black-screen" id="pre-game">
+        <audio id="countdown" src="../audio/countdown.mp3" autoplay></audio>
+
+        <p>Your game starts in
+        <br><br>
+        <span id="counter">3</span> <!-- Countdown timer -->
+        <br><br>
+        Press ESC to exit the game!</p>
+
+    </div>
+    
+    <!-- Main game container with maze and questions -->
+    <div class="maze-bg">
+        <div class="maze" id="maze-container">
+            <img src="../images/runner.png" id="red" alt="player"> <!-- Player image -->
+            
+            <!-- Riddle icons -->
+            <div id="riddle1">
+                <img src="../images/riddle.png" alt="riddle1">
+            </div>
+
+            <div id="riddle2">
+                <img src="../images/riddle.png" alt="riddle2">
+            </div>
+
+            <div id="riddle3">
+                <img src="../images/riddle.png" alt="riddle3">
+            </div>
+
+            <div id="riddle4">
+                <img src="../images/riddle.png" alt="riddle4">
+            </div>
+
+            <div id="riddle5">
+                <img src="../images/riddle.png" alt="riddle5">
+            </div>
+            
+            <!-- Riddle Sections (5 riddles) -->
+            
+            <!-- Riddle 1 -->
+            <div class="qbody" id="q1">
+                <h1>Question 1</h1>
+
+                <p>Your friend said, “If yesterday was tomorrow, today would be Friday." 
+                    On which day did your friend make this statement?</p>
+
+                <div class="options">
+
+                    <h2 id="q1w1">Wednesday</h2> <!-- Incorrect option -->
+                    <h2 id="correct1">Sunday</h2> <!-- Correct option -->
+                    <h2 id="q1w2">Friday</h2> <!-- Incorrect option -->
+                    <h2 id="q1w3">Thursday</h2> <!-- Incorrect option -->
+
+                    <input id="resp1" type="text" class="inputs" placeholder="Type" required>
+                    <button onclick="checkAnswer()" class="submit-btn">Submit</button> <!-- Submit button -->
+                </div>
+            </div>
+            
+            <!-- Riddle 2 -->
+            <div class="qbody" id="q2">
+                <h1>Question 2</h1>
+
+                <p>Which of these animals does NOT appear in the Chinese zodiac?</p>
+
+                <div class="options">
+                    <h2 id="q2w1">Rabbit</h2>
+                    <h2 id="q2w2">Dog</h2>
+                    <h2 id="q2w3">Dragon</h2>
+                    <h2 id="correct2">Bear</h2> <!-- Correct option -->
+
+                    <input id="resp2" type="text" class="inputs" placeholder="Type" required>
+                    <button onclick="checkAnswer()" class="submit-btn">Submit</button>
+                </div>
+            </div>
+            
+            <!-- Riddle 3 -->
+            <div class="qbody" id="q3">
+                <h1>Question 3</h1>
+                
+                <p>What is the heaviest organ in the human body?</p>
+
+                <div class="options">
+                    <h2 id="q3w1">Brain</h2>
+                    <h2 id="q3w2">Liver</h2>
+                    <h2 id="correct3">Skin</h2> <!-- Correct option -->
+                    <h2 id="q3w3">Heart</h2>
+
+                    <input id="resp3" type="text" class="inputs" placeholder="Type" required>
+                    <button onclick="checkAnswer()" class="submit-btn">Submit</button>
+                </div>
+            </div>
+            
+            <!-- Riddle 4 -->
+            <div class="qbody" id="q4">
+                <h1>Question 4</h1>
+                
+                <p>What country's national animal is unicorn?</p>
+
+                <div class="options">
+                    <h2 id="correct4">Scotland</h2> <!-- Correct option -->
+                    <h2 id="q4w1">Denmark</h2>
+                    <h2 id="q4w2">New Zealand</h2>
+                    <h2 id="q4w3">France</h2>
+
+                    <input id="resp4" type="text" class="inputs" placeholder="Type" required>
+                    <button onclick="checkAnswer()" class="submit-btn">Submit</button>
+                </div>
+            </div>
+            
+            <!-- Riddle 5 -->
+            <div class="qbody" id="q5">
+                <h1>Question 5</h1>
+                
+                <p>On average, how many seeds are located on the outside of a strawberry?</p>
+
+                <div class="options">
+                    <h2 id="q5w1">100</h2>
+                    <h2 id="correct5">200</h2> <!-- Correct option -->
+                    <h2 id="q5w2">350</h2>
+                    <h2 id="q5w3">500</h2>
+
+                    <input id="resp5" type="text" class="inputs" placeholder="Type" required>
+                    <button onclick="checkAnswer()" class="submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- displays game timer (150sec) -->
+        <div id="timer">
+            150 <!-- Initial timer value -->
+        </div>
+    </div>
+    
+    <!-- Linking external JavaScript file for game functionality -->
+    <script src="../javascript/gamescript.js"></script>
+</body>
+</html>

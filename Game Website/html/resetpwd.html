@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport scaling -->
+	<link href="../css/styles.css" rel="stylesheet"> <!-- Link to external css file -->
+    <title>Escape Maze | Reset Password</title> <!-- Page title -->
+</head>
+<body>
+    <div>
+		<!--Displays the first two links on the navigation bar-->
+		<div class="nav-bar-1">
+			<ul>
+				<li><a href="home.html">HOME</a></li>
+				<li><a href="leaderboard.html">LEADERBOARD</a></li>
+			</ul>
+		</div>
+		
+		<!--Displays the last two links on the navigation bar-->
+		<div class="nav-bar-2">
+			<ul>
+				<li><a href="login.html">LOGIN</a></li>
+				<li><a href="signup.html">SIGN UP</a></li>
+			</ul>
+		</div>
+		
+		<!--Displays 3 walls on the left side-->
+		<div class="left-wall-1"></div>
+		<div class="left-wall-2"></div>
+		<div class="left-wall-3"></div>
+
+		<!--Displays the sky of the game website-->
+		<div class="sky"></div>
+
+		<!--Displays the path in the middle-->
+		<div class="path"></div>
+
+		<!--Displays the floor of the game website-->
+		<div class="floor"></div>
+
+		<!--Displays 3 walls on the right side-->
+		<div class="right-wall-1"></div>
+		<div class="right-wall-2"></div>
+		<div class="right-wall-3"></div>
+			
+		<!--Displays a form that allows user to change or reset their password-->
+		<div class="reset-body">
+		
+			<div class="main-title" style="font-size: 65px;">Reset Password</div>
+			<br>
+			<form>
+				<label class="labels">Username:</label>
+				<input type="text" class="inputs" id="username" required>
+
+				<label class="labels">New Password:</label>
+				<input type="password" class="inputs" id="newpwd" required>
+
+				<label class="labels">Confirm Password:</label>
+				<input type="password" class="inputs" id="cfmpwd" required>
+				
+				<!--After resetting their password, users are requested to login again using their new password-->
+				<button onclick="resetPassword(event)" class="reset-btn" type="submit">Reset Password</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		function resetPassword(event) {
+			event.preventDefault();
+
+			let user_records = new Array();
+
+			//Defining variable to store the user data locally
+			let storedUsers = localStorage.getItem("users");
+
+			//if localStorage variable is not empty, the user_records varibale is assigned the localStorage data
+			if (storedUsers){
+				user_records = JSON.parse(storedUsers);
+			}
+			//else the user_records variable is assigned to an empty array
+			else {
+				user_records = [];
+			}
+
+			//Stores input given by user as username, newPassword and confirmPassword
+			let username = document.getElementById("username").value;
+			let newPassword = document.getElementById("newpwd").value;
+			let confirmPassword = document.getElementById("cfmpwd").value;
+			
+			//toLogin to check if user has changed password successfully
+			let toLogin = false; 
+
+			//if user does not enter any or all fields, they are alerted to do so.
+			if (username == "" || newPassword == "" || confirmPassword == "" ){
+				alert("All fields are required to be filled.");
+				return;
+			}
+
+			//if user exists
+			if (user_records.some((user) => {return user.name == username})){
+				//RegExp is used to check if password is secure or not
+				var passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
+
+				//if password is not secure, they are alerted to enter a more secure one
+				if (!passwordRegex.test(newPassword)){
+					alert(newPassword + " is not secure. Please enter strong password!");
+					return false;
+				}
+
+				//if password is secure
+				else {
+					//if confirm password password does not match with the new password they are alerted with the same message
+					if (newPassword !== confirmPassword){
+						alert("Passwords do not match!");
+						return false;
+					}
+
+					else {
+						//if the passwords do match
+						for (let i = 0; i < Object.keys(user_records).length; i++){
+
+							//the username is searched in the user_records
+							if (user_records[i]["name"] === username){
+								//password for that user is changed
+								user_records[i]["password"] = newPassword;
+
+								//the new password is saved in the local storage
+								localStorage.setItem("users", JSON.stringify(user_records));
+
+								alert("Password changed successfully!");
+								toLogin = true;
+
+								break;
+							}
+						}
+					}
+				}
+			}
+			
+			//if user does not exist
+			else {
+				alert("User not found! Do you have an account?");
+				return false;
+			}
+
+			//if password was changed successfully, user is redirected to login page
+			if (toLogin) {
+				window.location.assign("login.html")
+			}
+		}
+	</script>
+</body>
+</html>
